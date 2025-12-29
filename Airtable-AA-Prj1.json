@@ -1,0 +1,147 @@
+{
+  "name": "Airtable",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Room",
+        "formDescription": "What room do you like?",
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "UserName",
+              "fieldLabel": "What is your name?",
+              "placeholder": "Type your Name",
+              "requiredField": true
+            },
+            {
+              "fieldName": "RoomType",
+              "fieldLabel": "What room do you like?",
+              "fieldType": "checkbox",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Single room"
+                  },
+                  {
+                    "option": "Deluxe room"
+                  },
+                  {
+                    "option": "Suite"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "73e3197f-4741-44e0-b20e-2d8252e63280",
+      "name": "On form submission",
+      "webhookId": "0ac6eb69-91f6-42c8-94de-08385f5c8c75"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appjyICJS1TMFtbjI",
+          "mode": "list",
+          "cachedResultName": "ai-automation-prj1",
+          "cachedResultUrl": "https://airtable.com/appjyICJS1TMFtbjI"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblpJgF2g5FPtwmLS",
+          "mode": "list",
+          "cachedResultName": "Table 1",
+          "cachedResultUrl": "https://airtable.com/appjyICJS1TMFtbjI/tblpJgF2g5FPtwmLS"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "UserName": "={{ $json.UserName }}",
+            "RoomType": "={{ $json.RoomType[0] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "UserName",
+              "displayName": "UserName",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "RoomType",
+              "displayName": "RoomType",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "22e73353-07ac-49b6-a37c-76f54dfff97b",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "ugY6qrBJa39P7IV6",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Zagreb",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "180307a5-9795-460a-bc76-ebe85ee63677",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "507f68f129244b4be643465f96fdda9747b4d720eaba79326b7a3cc686178dc0"
+  },
+  "id": "cAM4KmbzVCkwVMvj",
+  "tags": []
+}
